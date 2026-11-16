@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "message": "",
+  "disabledMessage": "التطبيق متوقف مؤقتاً للصيانة.",
+  "requestPermissions": [],
+  "permissionMessage": "",
+  "permissionRequestId": ""
+}
