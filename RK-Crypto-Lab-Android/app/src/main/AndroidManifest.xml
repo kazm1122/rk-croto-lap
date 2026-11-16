@@ -1,29 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28" />
-
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:usesCleartextTraffic="false"
-        android:theme="@style/Theme.RKLab">
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout|uiMode"
-            android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
-</manifest>
+// Google Sheets: Extensions > Apps Script. الصق هذا ثم Deploy > New deployment > Web app
+// Execute as: Me  |  Who has access: Anyone
+function doPost(e) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName('log') || ss.insertSheet('log');
+  if (sh.getLastRow() === 0) sh.appendRow(['time','id','event','appVersion','android','model','lang']);
+  try {
+    var d = JSON.parse(e.postData.contents);
+    sh.appendRow([new Date(), d.id, d.event, d.appVersion, d.android, d.model, d.lang]);
+  } catch (err) {}
+  return ContentService.createTextOutput('ok');
+}
