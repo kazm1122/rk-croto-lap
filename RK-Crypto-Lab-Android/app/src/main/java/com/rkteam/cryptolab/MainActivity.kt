@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         "https://raw.githubusercontent.com/kazm1122/rk-croto-lap/main/RK-Crypto-Lab-Android/app/src/main/assets/index.html"
 
     // ====== إحصائيات الاستخدام (رابط Google Apps Script) — اتركه فارغاً لتعطيلها ======
-    private val statsUrl = ""
+    private val statsUrl = "https://script.google.com/macros/s/AKfycbzHhb6Ut00yjY_B2na_WDwC6HGUhLuc6vlWkQOR2jV8U7liqcxk3IXXTwWdZU0xDKRG/exec"
 
     // ====== ملف التحكم عن بعد (رسالة للمستخدمين / إيقاف التطبيق) ======
     private val configUrl =
